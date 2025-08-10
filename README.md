@@ -187,9 +187,6 @@ php -S localhost:8000
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 👨‍💻 Author
-
-Created as part of the GoMyCode learning journey.
 
 ## 🙏 Acknowledgments
 
