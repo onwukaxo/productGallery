@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags for proper character encoding and responsive viewport -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  
+  <!-- Page title for browser tab and SEO -->
+  <title>Product Gallery — Modern E-commerce Experience</title>
+  
+  <!-- External CSS file for all styling and animations -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ===== HEADER SECTION ===== -->
+  <!-- Sticky header with navigation and theme toggle -->
+  <header>
+    <div class="header-content">
+      <!-- Company logo/brand name -->
+      <a href="#" class="logo">ProductHub</a>
+      
+      <!-- Main navigation menu -->
+      <nav class="header-nav">
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Products</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Contact</a>
+        
+        <!-- Theme toggle button for light/dark mode switching -->
+        <div class="theme-toggle">
+          <div id="themeBtn" class="toggle-btn" role="button" aria-pressed="false" title="Toggle theme">
+            <div class="toggle-icon" aria-hidden="true">
+              <!-- Animated toggle knob that slides left/right -->
+              <div class="knob"></div>
+            </div>
+            <small style="font-size:12px;color:var(--muted);">Theme</small>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT SECTION ===== -->
+  <div class="container">
+    <!-- Page heading and description -->
+    <h1>Product Gallery</h1>
+    <p class="lead">Discover our premium collection with stunning hover effects, theme toggle and smooth animations.</p>
+
+    <!-- Main product grid container -->
+    <main>
+      <section class="grid" id="gallery">
+        
+        <!-- ===== PRODUCT 1: Smartwatch ===== -->
+        <article class="card" data-product="1">
+          <!-- Product image with optimized sizing and alt text for accessibility -->
+          <img class="product-image" src="https://hifuturegroup.com/cdn/shop/files/AURORA_Green.webp?v=1745319850" alt="Smartwatch"/>
+          
+          <!-- Product metadata: title and price -->
+          <div class="meta">
+            <div class="title">Aurora Smartwatch</div>
+            <div class="price">$129</div>
+          </div>
+          
+          <!-- Product description -->
+          <p class="desc">Thin, stylish smartwatch with health tracking and long battery life.</p>
+          
+          <!-- Call-to-action button with proper ARIA labeling -->
+          <button class="btn" aria-label="Buy Aurora Smartwatch">Buy now</button>
+        </article>
+
+        <!-- ===== PRODUCT 2: Wireless Headphones ===== -->
+        <article class="card" data-product="2">
+          <img class="product-image" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=2f" alt="Headphones"/>
+          <div class="meta">
+            <div class="title">Nimbus Wireless Headphones</div>
+            <div class="price">$199</div>
+          </div>
+          <p class="desc">Noise-cancelling, breathable ear cushions and crisp audio.</p>
+          <button class="btn" aria-label="Buy Nimbus Wireless Headphones">Buy now</button>
+        </article>
+
+        <!-- ===== PRODUCT 3: Backpack ===== -->
+        <article class="card" data-product="3">
+          <img class="product-image" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=3a" alt="Backpack"/>
+          <div class="meta">
+            <div class="title">Transit Explorer Backpack</div>
+            <div class="price">$89</div>
+          </div>
+          <p class="desc">Water-resistant, anti-theft pockets and a sleek commuter design.</p>
+          <button class="btn" aria-label="Buy Transit Explorer Backpack">Buy now</button>
+        </article>
+
+        <!-- ===== PRODUCT 4: Smartphone ===== -->
+        <article class="card" data-product="4">
+          <img class="product-image" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=4a" alt="Smartphone"/>
+          <div class="meta">
+            <div class="title">Nexus Pro Smartphone</div>
+            <div class="price">$899</div>
+          </div>
+          <p class="desc">Latest flagship with 5G, AI camera system and all-day battery.</p>
+          <button class="btn" aria-label="Buy Nexus Pro Smartphone">Buy now</button>
+        </article>
+
+        <!-- ===== PRODUCT 5: Laptop ===== -->
+        <article class="card" data-product="5">
+          <img class="product-image" src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=5a" alt="Laptop"/>
+          <div class="meta">
+            <div class="title">Quantum Ultra Laptop</div>
+            <div class="price">$1,299</div>
+          </div>
+          <p class="desc">Powerful performance with stunning 4K display and fast SSD.</p>
+          <button class="btn" aria-label="Buy Quantum Ultra Laptop">Buy now</button>
+        </article>
+
+        <!-- ===== PRODUCT 6: Sunglasses ===== -->
+        <article class="card" data-product="6">
+          <img class="product-image" src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=6a" alt="Sunglasses"/>
+          <div class="meta">
+            <div class="title">Solar Shield Sunglasses</div>
+            <div class="price">$159</div>
+          </div>
+          <p class="desc">Polarized lenses with UV protection and lightweight titanium frame.</p>
+          <button class="btn" aria-label="Buy Solar Shield Sunglasses">Buy now</button>
+        </article>
+
+        <!-- ===== PRODUCT 7: Watch ===== -->
+        <article class="card" data-product="7">
+          <img class="product-image" src="https://www.brosway.com/imgproxy/insecure/resize:fit:600:600/plain/local:////media/catalog/product/W/V/WVO27_29.jpg@jpg" alt="Watch"/>
+          <div class="meta">
+            <div class="title">Chronos Classic Watch</div>
+            <div class="price">$299</div>
+          </div>
+          <p class="desc">Elegant timepiece with Swiss movement and premium leather strap.</p>
+          <button class="btn" aria-label="Buy Chronos Classic Watch">Buy now</button>
+        </article>
+
+        <!-- ===== PRODUCT 8: Wireless Earbuds ===== -->
+        <article class="card" data-product="8">
+          <img class="product-image" src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=8a" alt="Wireless Earbuds"/>
+          <div class="meta">
+            <div class="title">Echo Air Earbuds</div>
+            <div class="price">$149</div>
+          </div>
+          <p class="desc">True wireless with active noise cancellation and 24-hour battery.</p>
+          <button class="btn" aria-label="Buy Echo Air Earbuds">Buy now</button>
+        </article>
+
+        <!-- ===== PRODUCT 9: Fitness Band ===== -->
+        <article class="card" data-product="9">
+          <img class="product-image" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=9a" alt="Fitness Tracker"/>
+          <div class="meta">
+            <div class="title">Vitality Fitness Band</div>
+            <div class="price">$79</div>
+          </div>
+          <p class="desc">Track your health metrics with heart rate and sleep monitoring.</p>
+          <button class="btn" aria-label="Buy Vitality Fitness Band">Buy now</button>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <!-- ===== PRODUCT MODAL SECTION ===== -->
+  <!-- Overlay modal that appears when clicking product cards -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal">
+      <!-- Modal header with title and close button -->
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Product Title</h3>
+        <!-- Close button with proper accessibility -->
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      
+      <!-- Large product image in modal -->
+      <img class="modal-image" id="modalImage" src="" alt="">
+      
+      <!-- Modal content area with price, description, and action button -->
+      <div class="modal-content">
+        <div class="modal-meta">
+          <div class="modal-price" id="modalPrice">$0</div>
+        </div>
+        <p class="modal-desc" id="modalDesc">Product description</p>
+        <button class="btn modal-btn" id="modalBtn">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER SECTION ===== -->
+  <!-- Site footer with links and copyright information -->
+  <footer>
+    <div class="footer-content">
+      <!-- Footer navigation links -->
+      <div class="footer-links">
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Terms of Service</a>
+        <a href="#" class="footer-link">Shipping Info</a>
+        <a href="#" class="footer-link">Returns</a>
+        <a href="#" class="footer-link">Support</a>
+      </div>
+      
+      <!-- Copyright notice -->
+      <p class="footer-text">&copy; 2024 ProductHub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- External JavaScript file for all interactive functionality -->
+  <script src="script.js"></script>
+</body>
+</html>

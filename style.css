@@ -1,0 +1,477 @@
+/* ===== PRODUCT GALLERY STYLESHEET ===== */
+/* This file contains all styling for the product gallery including:
+   - CSS Custom Properties (variables) for theming
+   - Layout and typography styles
+   - Animations and transitions
+   - Responsive design rules
+   - Modal and interactive components */
+
+/* ===== CSS CUSTOM PROPERTIES (VARIABLES) ===== */
+/* Light theme color scheme - easily customizable */
+:root{
+  --bg:#f7f7fb;                    /* Main background color */
+  --card:#ffffff;                   /* Card background color */
+  --muted:#6b7280;                 /* Secondary text color */
+  --text:#0f172a;                  /* Primary text color */
+  --accent:#3b82f6;                /* Primary accent color */
+  --glass: rgba(255,255,255,0.6);  /* Glassmorphism effect color */
+  --shadow: rgba(11,15,30,0.06);   /* Default shadow color */
+  --shadow-hover: rgba(2,6,23,0.18); /* Hover shadow color */
+}
+
+/* Dark theme color scheme - automatically applied when .dark class is present */
+.dark{
+  --bg: #0b1020;                    /* Dark background */
+  --card: #0f172a;                  /* Dark card background */
+  --muted: #9ca3af;                 /* Dark muted text */
+  --text:#f8fafc;                   /* Dark primary text */
+  --accent:#60a5fa;                 /* Dark theme accent */
+  --glass: rgba(15,23,42,0.6);      /* Dark glassmorphism */
+  --shadow: rgba(0,0,0,0.3);        /* Dark shadow */
+  --shadow-hover: rgba(0,0,0,0.5);  /* Dark hover shadow */
+}
+
+/* ===== BASE LAYOUT STYLES ===== */
+/* CSS reset and base element styling */
+*{box-sizing:border-box}            /* Include padding/border in element dimensions */
+html,body{height:100%}              /* Full height for flexbox layout */
+
+/* Main body styling with flexbox layout */
+body{
+  margin:0;                         /* Remove default margins */
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background:linear-gradient(180deg,var(--bg),var(--bg)); /* Background with theme colors */
+  color:var(--text);                /* Text color from theme */
+  -webkit-font-smoothing:antialiased; /* Smooth font rendering */
+  -moz-osx-font-smoothing:grayscale;  /* Smooth font rendering for Firefox */
+  transition:background-color 300ms ease, color 300ms ease; /* Smooth theme transitions */
+  padding:0;                        /* No padding for full-width layout */
+  display:flex;                     /* Flexbox layout for sticky footer */
+  flex-direction: column;           /* Stack children vertically */
+  min-height:100vh;                 /* Full viewport height */
+}
+
+/* Main container for content centering and max-width */
+.container{
+  width:100%;                       /* Full width */
+  max-width:1200px;                 /* Maximum content width */
+  margin:0 auto;                    /* Center horizontally */
+  padding:0 20px;                   /* Horizontal padding */
+  flex:1;                           /* Take remaining space for sticky footer */
+}
+
+/* ===== HEADER STYLES ===== */
+/* Sticky header with glassmorphism effect */
+header{
+  background:var(--glass);          /* Semi-transparent background */
+  backdrop-filter:blur(20px);       /* Blur effect behind header */
+  border-bottom:1px solid rgba(255,255,255,0.1); /* Subtle border */
+  padding:20px 0;                   /* Vertical padding */
+  position:sticky;                  /* Sticky positioning */
+  top:0;                            /* Stick to top */
+  z-index:100;                      /* High z-index for layering */
+  margin-bottom:40px;               /* Space below header */
+}
+
+/* Header content container for layout */
+.header-content{
+  display:flex;                     /* Flexbox layout */
+  align-items:center;               /* Center items vertically */
+  justify-content:space-between;    /* Space items apart */
+  max-width:1200px;                 /* Match main container */
+  margin:0 auto;                    /* Center horizontally */
+  padding:0 20px;                   /* Horizontal padding */
+}
+
+/* Company logo styling */
+.logo{
+  font-size:24px;                   /* Large logo text */
+  font-weight:700;                  /* Bold weight */
+  color:var(--accent);              /* Accent color */
+  text-decoration:none;             /* No underline */
+}
+
+/* Navigation menu container */
+.header-nav{
+  display:flex;                     /* Flexbox layout */
+  align-items:center;               /* Center items vertically */
+  gap:30px;                         /* Space between nav items */
+}
+
+/* Individual navigation links */
+.nav-link{
+  color:var(--text);                /* Text color from theme */
+  text-decoration:none;             /* No underline */
+  font-weight:500;                  /* Medium weight */
+  transition:color 200ms ease;      /* Smooth color transitions */
+}
+
+/* Navigation link hover effect */
+.nav-link:hover{
+  color:var(--accent);              /* Accent color on hover */
+}
+
+/* ===== PAGE HEADING STYLES ===== */
+/* Main page title */
+h1{font-size:28px;margin:0;text-align:center;margin-bottom:8px}
+/* Page description text */
+p.lead{margin:4px 0 0;color:var(--muted);font-size:16px;text-align:center;margin-bottom:40px}
+
+/* ===== THEME TOGGLE STYLES ===== */
+/* Theme toggle button container */
+.theme-toggle{
+  display:inline-flex;              /* Inline flexbox */
+  align-items:center;               /* Center items vertically */
+  gap:10px;                         /* Space between elements */
+}
+
+/* Theme toggle button styling */
+.toggle-btn{
+  background:var(--glass);          /* Glassmorphism background */
+  border:1px solid rgba(255,255,255,0.06); /* Subtle border */
+  padding:8px 12px;                 /* Button padding */
+  border-radius:999px;              /* Rounded button */
+  display:inline-flex;              /* Flexbox layout */
+  align-items:center;               /* Center items vertically */
+  gap:8px;                          /* Space between elements */
+  cursor:pointer;                   /* Pointer cursor */
+  transition:transform 180ms ease, background 180ms ease; /* Smooth transitions */
+}
+
+/* Button active state */
+.toggle-btn:active{transform:scale(0.98)}
+
+/* Toggle icon container */
+.toggle-icon{
+  width:38px;height:22px;border-radius:999px;position:relative;background:linear-gradient(90deg,#fff0,#fff0);
+  display:inline-block;overflow:hidden;flex-shrink:0
+}
+
+/* Toggle knob (sliding element) */
+.knob{
+  position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:linear-gradient(180deg,#fff,#e6eefc);box-shadow:0 2px 6px rgba(2,6,23,0.15);transition:all 220ms cubic-bezier(.2,.9,.3,1)
+}
+
+/* Dark theme knob position */
+.dark .knob{left:18px;background:linear-gradient(180deg,#fff,#cfe2ff)}
+
+/* ===== PRODUCT GRID LAYOUT ===== */
+/* Responsive grid container for products */
+.grid{
+  display:grid;                     /* CSS Grid layout */
+  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); /* Auto-fitting columns */
+  gap:30px;                         /* Space between grid items */
+  align-items:start;                /* Align items to top */
+  margin-bottom:60px;               /* Space below grid */
+}
+
+/* ===== PRODUCT CARD STYLES ===== */
+/* Individual product card styling */
+.card{
+  background:var(--card);           /* Card background from theme */
+  border-radius:20px;               /* Rounded corners */
+  padding:20px;                     /* Internal spacing */
+  box-shadow:0 8px 25px var(--shadow); /* Default shadow */
+  border:1px solid rgba(2,6,23,0.04); /* Subtle border */
+  transform-origin:center;          /* Transform from center */
+  transition:all 400ms cubic-bezier(.2,.9,.3,1); /* Smooth transitions */
+  opacity:0;                        /* Hidden until animated */
+  will-change:transform,opacity,box-shadow; /* Optimize animations */
+  cursor:pointer;                   /* Pointer cursor */
+  position:relative;                /* For pseudo-elements */
+  overflow:hidden;                  /* Hide overflow */
+}
+
+/* Top accent line on cards */
+.card::before{
+  content:'';                       /* Pseudo-element content */
+  position:absolute;                /* Absolute positioning */
+  top:0;                            /* Top of card */
+  left:0;                           /* Left of card */
+  right:0;                          /* Right of card */
+  height:4px;                       /* Line height */
+  background:linear-gradient(90deg,var(--accent),#8b5cf6); /* Gradient line */
+  transform:scaleX(0);              /* Hidden by default */
+  transition:transform 400ms ease;  /* Smooth transition */
+}
+
+/* Show accent line on hover */
+.card:hover::before{
+  transform:scaleX(1);              /* Full width on hover */
+}
+
+/* Card hover effects */
+.card:hover{
+  transform:translateY(-15px) scale(1.03); /* Lift and scale */
+  box-shadow:0 25px 60px var(--shadow-hover); /* Enhanced shadow */
+  border-color: rgba(59,130,246,0.2); /* Accent border color */
+}
+
+/* ===== PRODUCT IMAGE STYLES ===== */
+/* Product image container */
+.product-image{
+  width:100%;                       /* Full width */
+  height:220px;                     /* Fixed height */
+  border-radius:15px;               /* Rounded corners */
+  object-fit:cover;                 /* Maintain aspect ratio */
+  display:block;                    /* Block display */
+  margin-bottom:16px;               /* Space below image */
+  background:linear-gradient(135deg,#eef2ff,#fff); /* Fallback background */
+  transition:transform 400ms ease;  /* Smooth transitions */
+}
+
+/* Image scale effect on card hover */
+.card:hover .product-image{
+  transform:scale(1.05);            /* Slight scale up */
+}
+
+/* ===== PRODUCT METADATA STYLES ===== */
+/* Product title and price container */
+.meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+/* Product title styling */
+.title{font-weight:600;font-size:18px;color:var(--text)}
+/* Product price styling */
+.price{font-weight:700;font-size:20px;color:var(--accent)}
+/* Product description styling */
+.desc{color:var(--muted);font-size:14px;margin:0 0 20px;line-height:1.5}
+
+/* ===== BUTTON STYLES ===== */
+/* Primary button styling */
+.btn{
+  display:inline-block;             /* Inline block */
+  padding:12px 20px;                /* Button padding */
+  border-radius:12px;               /* Rounded corners */
+  font-weight:600;                  /* Bold text */
+  background:linear-gradient(90deg,var(--accent),#8b5cf6); /* Gradient background */
+  color:white;                      /* White text */
+  border:none;                      /* No border */
+  cursor:pointer;                   /* Pointer cursor */
+  text-decoration:none;             /* No underline */
+  transition:all 300ms ease;        /* Smooth transitions */
+  width:100%;                       /* Full width */
+  text-align:center;                /* Center text */
+  font-size:14px;                   /* Font size */
+}
+
+/* Button hover effects */
+.btn:hover{
+  transform:translateY(-2px);       /* Lift up */
+  box-shadow:0 8px 25px rgba(59,130,246,0.3); /* Enhanced shadow */
+}
+
+/* Button active state */
+.btn:active{transform:translateY(0)}
+
+/* ===== ANIMATION KEYFRAMES ===== */
+/* Fade up animation for cards */
+@keyframes fadeUp {
+  from{opacity:0;transform:translateY(30px) scale(.95)} /* Start state */
+  to{opacity:1;transform:translateY(0) scale(1)}       /* End state */
+}
+
+/* Slide in animation for modals */
+@keyframes slideIn {
+  from{opacity:0;transform:translateX(-30px)} /* Start state */
+  to{opacity:1;transform:translateX(0)}       /* End state */
+}
+
+/* Apply fade up animation */
+.is-visible{animation:fadeUp 600ms cubic-bezier(.2,.9,.3,1) forwards}
+
+/* ===== STAGGERED ANIMATION DELAYS ===== */
+/* Stagger children using nth-child delays for sequential animation */
+.card:nth-child(1){animation-delay:100ms}
+.card:nth-child(2){animation-delay:200ms}
+.card:nth-child(3){animation-delay:300ms}
+.card:nth-child(4){animation-delay:400ms}
+.card:nth-child(5){animation-delay:500ms}
+.card:nth-child(6){animation-delay:600ms}
+.card:nth-child(7){animation-delay:700ms}
+.card:nth-child(8){animation-delay:800ms}
+.card:nth-child(9){animation-delay:900ms}
+
+/* ===== MODAL STYLES ===== */
+/* Modal overlay (full screen background) */
+.modal-overlay{
+  position:fixed;                   /* Fixed positioning */
+  top:0;                            /* Top of viewport */
+  left:0;                           /* Left of viewport */
+  right:0;                          /* Right of viewport */
+  bottom:0;                         /* Bottom of viewport */
+  background:rgba(0,0,0,0.7);      /* Semi-transparent background */
+  backdrop-filter:blur(10px);       /* Blur effect */
+  display:flex;                     /* Flexbox layout */
+  align-items:center;               /* Center vertically */
+  justify-content:center;           /* Center horizontally */
+  z-index:1000;                     /* High z-index */
+  opacity:0;                        /* Hidden by default */
+  visibility:hidden;                /* Hidden by default */
+  transition:all 300ms ease;        /* Smooth transitions */
+}
+
+/* Modal overlay when active */
+.modal-overlay.active{
+  opacity:1;                        /* Visible */
+  visibility:visible;                /* Visible */
+}
+
+/* Modal container */
+.modal{
+  background:var(--card);           /* Modal background from theme */
+  border-radius:20px;               /* Rounded corners */
+  padding:0;                        /* No padding (handled by children) */
+  max-width:500px;                  /* Maximum width */
+  width:90%;                        /* Responsive width */
+  max-height:90vh;                  /* Maximum height */
+  overflow:hidden;                  /* Hide overflow */
+  transform:scale(0.8) translateY(20px); /* Start state for animation */
+  transition:all 300ms ease;        /* Smooth transitions */
+  box-shadow:0 25px 60px rgba(0,0,0,0.3); /* Modal shadow */
+}
+
+/* Modal when active */
+.modal-overlay.active .modal{
+  transform:scale(1) translateY(0); /* End state for animation */
+}
+
+/* Modal header section */
+.modal-header{
+  padding:20px;                     /* Internal spacing */
+  border-bottom:1px solid rgba(255,255,255,0.1); /* Subtle border */
+  display:flex;                     /* Flexbox layout */
+  align-items:center;               /* Center items vertically */
+  justify-content:space-between;    /* Space items apart */
+}
+
+/* Modal title styling */
+.modal-title{
+  font-size:20px;                   /* Font size */
+  font-weight:600;                  /* Font weight */
+  margin:0;                         /* No margins */
+}
+
+/* Modal close button */
+.modal-close{
+  background:none;                  /* No background */
+  border:none;                      /* No border */
+  font-size:24px;                   /* Font size */
+  cursor:pointer;                   /* Pointer cursor */
+  color:var(--muted);              /* Muted color */
+  padding:0;                        /* No padding */
+  width:32px;                       /* Fixed width */
+  height:32px;                      /* Fixed height */
+  border-radius:50%;                /* Circular button */
+  display:flex;                     /* Flexbox layout */
+  align-items:center;               /* Center items vertically */
+  justify-content:center;           /* Center items horizontally */
+  transition:all 200ms ease;        /* Smooth transitions */
+}
+
+/* Close button hover effect */
+.modal-close:hover{
+  background:var(--glass);          /* Glassmorphism background */
+  color:var(--text);                /* Text color */
+}
+
+/* Modal image styling */
+.modal-image{
+  width:100%;                       /* Full width */
+  height:250px;                     /* Fixed height */
+  object-fit:cover;                 /* Maintain aspect ratio */
+  display:block;                    /* Block display */
+}
+
+/* Modal content area */
+.modal-content{
+  padding:20px;                     /* Internal spacing */
+}
+
+/* Modal metadata (price) container */
+.modal-meta{
+  display:flex;                     /* Flexbox layout */
+  align-items:center;               /* Center items vertically */
+  justify-content:space-between;    /* Space items apart */
+  margin-bottom:16px;               /* Space below */
+}
+
+/* Modal price styling */
+.modal-price{
+  font-size:24px;                   /* Large font size */
+  font-weight:700;                  /* Bold weight */
+  color:var(--accent);              /* Accent color */
+}
+
+/* Modal description styling */
+.modal-desc{
+  color:var(--muted);               /* Muted color */
+  line-height:1.6;                  /* Line height */
+  margin-bottom:24px;               /* Space below */
+}
+
+/* Modal button styling */
+.modal-btn{
+  width:100%;                       /* Full width */
+  padding:14px 24px;                /* Button padding */
+  font-size:16px;                   /* Font size */
+}
+
+/* ===== FOOTER STYLES ===== */
+/* Site footer */
+footer{
+  background:var(--glass);          /* Glassmorphism background */
+  backdrop-filter:blur(20px);       /* Blur effect */
+  border-top:1px solid rgba(255,255,255,0.1); /* Subtle border */
+  padding:40px 0;                   /* Vertical padding */
+  margin-top:auto;                  /* Push to bottom */
+}
+
+/* Footer content container */
+.footer-content{
+  max-width:1200px;                 /* Match main container */
+  margin:0 auto;                    /* Center horizontally */
+  padding:0 20px;                   /* Horizontal padding */
+  text-align:center;                /* Center text */
+}
+
+/* Footer navigation links */
+.footer-links{
+  display:flex;                     /* Flexbox layout */
+  justify-content:center;           /* Center items horizontally */
+  gap:30px;                         /* Space between links */
+  margin-bottom:20px;               /* Space below */
+}
+
+/* Individual footer link */
+.footer-link{
+  color:var(--muted);               /* Muted color */
+  text-decoration:none;             /* No underline */
+  transition:color 200ms ease;      /* Smooth transitions */
+}
+
+/* Footer link hover effect */
+.footer-link:hover{
+  color:var(--accent);              /* Accent color on hover */
+}
+
+/* Footer copyright text */
+.footer-text{
+  color:var(--muted);               /* Muted color */
+  font-size:14px;                   /* Small font size */
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+/* Tablet and smaller desktop screens */
+@media (max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr);gap:20px} /* 2 columns */
+  .header-nav{gap:20px}             /* Reduce nav spacing */
+}
+
+/* Mobile devices */
+@media (max-width:640px){
+  .container{padding:0 15px}        /* Reduce container padding */
+  .grid{grid-template-columns:1fr;gap:20px} /* Single column */
+  .product-image{height:200px}      /* Smaller images on mobile */
+  .header-content{flex-direction:column;gap:20px} /* Stack header items */
+  .header-nav{gap:15px}             /* Reduce nav spacing */
+  .footer-links{flex-direction:column;gap:15px} /* Stack footer links */
+}
